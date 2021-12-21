@@ -17,6 +17,7 @@ class NetworkFetchUseCase: NetworkUseCaseProtocol {
     }
     
     func execute<Item: Codable>(from url: String, completion: @escaping (Result<Item, Error>) -> ()) {
+        
         service.fetchData(from: url, completion: completion)
     }
 }

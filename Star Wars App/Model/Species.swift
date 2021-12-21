@@ -1,6 +1,8 @@
 import Foundation
 
-struct Species: Codable {
+struct Species: Codable, Searchable {
+    static var group: String = "species"
+    
     let name, classification, designation, averageHeight: String
     let skinColors, hairColors, eyeColors, averageLifespan: String
     let homeworld: String

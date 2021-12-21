@@ -88,7 +88,9 @@ class WriteNameReusableView: UICollectionReusableView {
     // MARK: - ACTIONS
     
     @objc private func searchButtonAction(_ sender: UIButton) {
+        
         if let text = textField.text {
+            
             delegate?.setText(text)
         }
     }

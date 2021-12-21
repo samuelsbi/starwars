@@ -1,6 +1,8 @@
 import Foundation
 
-struct Film: Codable {
+struct Film: Codable, Searchable {
+    static var group: String = "films"
+
     let title: String
     let episodeID: Int
     let openingCrawl, director, producer, releaseDate: String

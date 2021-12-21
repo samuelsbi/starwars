@@ -27,22 +27,23 @@ class MainCoordinator: Coordinator {
     
     func presentPersonControllerURLSession() {
         networkService = .urlSession
-        let viewController = factory.makeItemViewController(ItemType: Person.self, url: "http://localhost:9000/people/", network: networkService)
+        let viewController = factory.makeItemViewController(ItemType: Person.self, network: networkService)
         viewController.delegate = self
         navigationController.pushViewController(viewController, animated: true)
     }
     
     func presentPersonControllerAlamofire() {
         networkService = .alamofire
-        let viewController = factory.makeItemViewController(ItemType: Person.self, url: "http://localhost:9000/people/", network: networkService)
+        let viewController = factory.makeItemViewController(ItemType: Person.self, network: networkService)
         viewController.delegate = self
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func presentPreLoadedViewController<Item: Codable>(url: String, preLoadedURL: String, itemType: Item.Type) {
-        let viewController = factory.makeItemViewController(ItemType: Person.self, url: url, network: networkService)
-        viewController.preConfigureViewModel(with: preLoadedURL)
+    func presentPreLoadedViewController<Item: Codable & Searchable>(preLoadedURL: String, itemType: Item.Type) {
+        //let url = "https://swapi.dev/api/\(name)/"
+        let viewController = factory.makeItemViewController(ItemType: Item.self, network: networkService)
         viewController.delegate = self
+        viewController.preConfigureViewModel(with: preLoadedURL)
         navigationController.pushViewController(viewController, animated: true)
     }
 }
@@ -62,17 +63,17 @@ extension MainCoordinator: ItemViewControllerDelegate {
     func showPreLoadedItem(from url: String) {
         
         if url.range(of: "people") != nil {
-            presentPreLoadedViewController(url: "http://localhost:9000/people/", preLoadedURL: url, itemType: Person.self)
+            presentPreLoadedViewController(preLoadedURL: url, itemType: Person.self)
         } else if url.range(of: "planets") != nil {
-            presentPreLoadedViewController(url: "https://swapi.dev/api/planets/", preLoadedURL: url, itemType: Planet.self)
+            presentPreLoadedViewController(preLoadedURL: url, itemType: Planet.self)
         } else if url.range(of: "films") != nil {
-            presentPreLoadedViewController(url: "https://swapi.dev/api/films/", preLoadedURL: url, itemType: Film.self)
+            presentPreLoadedViewController(preLoadedURL: url, itemType: Film.self)
         } else if url.range(of: "starships") != nil {
-            presentPreLoadedViewController(url: "https://swapi.dev/api/starships/", preLoadedURL: url, itemType: Starship.self)
+            presentPreLoadedViewController(preLoadedURL: url, itemType: Starship.self)
         } else if url.range(of: "vehicles") != nil {
-            presentPreLoadedViewController(url: "https://swapi.dev/api/vehicles/", preLoadedURL: url, itemType: Vehicle.self)
+            presentPreLoadedViewController(preLoadedURL: url, itemType: Vehicle.self)
         } else if url.range(of: "species") != nil {
-            presentPreLoadedViewController(url: "https://swapi.dev/api/species/", preLoadedURL: url, itemType: Species.self)
+            presentPreLoadedViewController(preLoadedURL: url, itemType: Species.self)
         }
     }
 }

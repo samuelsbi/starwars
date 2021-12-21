@@ -44,60 +44,61 @@ class ItemsAssemble: Assembly {
     }
     
     private func registerViewModels(container: Container) {
-        container.register(ItemViewModel.self) { (resolver: Resolver, url: String, defaultNetwork: DefaultNetworkService) -> ItemViewModel<Person> in
+        container.register(ItemViewModel.self) { (resolver: Resolver, defaultNetwork: DefaultNetworkService) -> ItemViewModel<Person> in
             let networkUseCase = resolver.resolveUnwrapping(NetworkFetchUseCase.self, argument: defaultNetwork)
-            return ItemViewModel(networkUseCase: networkUseCase, url: url)
+            let url = "https://swapi.dev/api/\(Person.group)/"
+            return ItemViewModel(networkUseCase: networkUseCase)
         }
         
-        container.register(ItemViewModel.self) { (resolver: Resolver, url: String, defaultNetwork: DefaultNetworkService) -> ItemViewModel<Planet> in
+        container.register(ItemViewModel.self) { (resolver: Resolver, defaultNetwork: DefaultNetworkService) -> ItemViewModel<Planet> in
             let networkUseCase = resolver.resolveUnwrapping(NetworkFetchUseCase.self, argument: defaultNetwork)
-            return ItemViewModel(networkUseCase: networkUseCase, url: url)
+            return ItemViewModel(networkUseCase: networkUseCase)
         }
         
-        container.register(ItemViewModel.self) { (resolver: Resolver, url: String, defaultNetwork: DefaultNetworkService) -> ItemViewModel<Film> in
+        container.register(ItemViewModel.self) { (resolver: Resolver, defaultNetwork: DefaultNetworkService) -> ItemViewModel<Film> in
             let networkUseCase = resolver.resolveUnwrapping(NetworkFetchUseCase.self, argument: defaultNetwork)
-            return ItemViewModel(networkUseCase: networkUseCase, url: url)
+            return ItemViewModel(networkUseCase: networkUseCase)
         }
         
-        container.register(ItemViewModel.self) { (resolver: Resolver, url: String, defaultNetwork: DefaultNetworkService) -> ItemViewModel<Starship> in
+        container.register(ItemViewModel.self) { (resolver: Resolver, defaultNetwork: DefaultNetworkService) -> ItemViewModel<Starship> in
             let networkUseCase = resolver.resolveUnwrapping(NetworkFetchUseCase.self, argument: defaultNetwork)
-            return ItemViewModel(networkUseCase: networkUseCase, url: url)
+            return ItemViewModel(networkUseCase: networkUseCase)
         }
         
-        container.register(ItemViewModel.self) { (resolver: Resolver, url: String, defaultNetwork: DefaultNetworkService) -> ItemViewModel<Vehicle> in
+        container.register(ItemViewModel.self) { (resolver: Resolver, defaultNetwork: DefaultNetworkService) -> ItemViewModel<Vehicle> in
             let networkUseCase = resolver.resolveUnwrapping(NetworkFetchUseCase.self, argument: defaultNetwork)
-            return ItemViewModel(networkUseCase: networkUseCase, url: url)
+            return ItemViewModel(networkUseCase: networkUseCase)
         }
         
-        container.register(ItemViewModel.self) { (resolver: Resolver, url: String, defaultNetwork: DefaultNetworkService) -> ItemViewModel<Species> in
+        container.register(ItemViewModel.self) { (resolver: Resolver, defaultNetwork: DefaultNetworkService) -> ItemViewModel<Species> in
             let networkUseCase = resolver.resolveUnwrapping(NetworkFetchUseCase.self, argument: defaultNetwork)
-            return ItemViewModel(networkUseCase: networkUseCase, url: url)
+            return ItemViewModel(networkUseCase: networkUseCase)
         }
     }
     
     private func registerItemsViewControllers(container: Container) {
-        container.register(ItemViewController.self) { (resolver: Resolver, url: String, defaultNetwork: DefaultNetworkService) -> ItemViewController<ItemViewModel<Person>> in
-            let viewModel = resolver.resolveUnwrapping(ItemViewModel<Person>.self, arguments: url, defaultNetwork)
+        container.register(ItemViewController.self) { (resolver: Resolver, defaultNetwork: DefaultNetworkService) -> ItemViewController<ItemViewModel<Person>> in
+            let viewModel = resolver.resolveUnwrapping(ItemViewModel<Person>.self, argument: defaultNetwork)
             return ItemViewController(viewModel: viewModel)
         }
-        container.register(ItemViewController.self) { (resolver: Resolver, url: String, defaultNetwork: DefaultNetworkService) -> ItemViewController<ItemViewModel<Planet>> in
-            let viewModel = resolver.resolveUnwrapping(ItemViewModel<Planet>.self, arguments: url, defaultNetwork)
+        container.register(ItemViewController.self) { (resolver: Resolver, defaultNetwork: DefaultNetworkService) -> ItemViewController<ItemViewModel<Planet>> in
+            let viewModel = resolver.resolveUnwrapping(ItemViewModel<Planet>.self, argument: defaultNetwork)
             return ItemViewController(viewModel: viewModel)
         }
-        container.register(ItemViewController.self) { (resolver: Resolver, url: String, defaultNetwork: DefaultNetworkService) -> ItemViewController<ItemViewModel<Film>> in
-            let viewModel = resolver.resolveUnwrapping(ItemViewModel<Film>.self, arguments: url, defaultNetwork)
+        container.register(ItemViewController.self) { (resolver: Resolver, defaultNetwork: DefaultNetworkService) -> ItemViewController<ItemViewModel<Film>> in
+            let viewModel = resolver.resolveUnwrapping(ItemViewModel<Film>.self, argument: defaultNetwork)
             return ItemViewController(viewModel: viewModel)
         }
-        container.register(ItemViewController.self) { (resolver: Resolver, url: String, defaultNetwork: DefaultNetworkService) -> ItemViewController<ItemViewModel<Starship>> in
-            let viewModel = resolver.resolveUnwrapping(ItemViewModel<Starship>.self, arguments: url, defaultNetwork)
+        container.register(ItemViewController.self) { (resolver: Resolver, defaultNetwork: DefaultNetworkService) -> ItemViewController<ItemViewModel<Starship>> in
+            let viewModel = resolver.resolveUnwrapping(ItemViewModel<Starship>.self, argument: defaultNetwork)
             return ItemViewController(viewModel: viewModel)
         }
-        container.register(ItemViewController.self) { (resolver: Resolver, url: String, defaultNetwork: DefaultNetworkService) -> ItemViewController<ItemViewModel<Vehicle>> in
-            let viewModel = resolver.resolveUnwrapping(ItemViewModel<Vehicle>.self, arguments: url, defaultNetwork)
+        container.register(ItemViewController.self) { (resolver: Resolver, defaultNetwork: DefaultNetworkService) -> ItemViewController<ItemViewModel<Vehicle>> in
+            let viewModel = resolver.resolveUnwrapping(ItemViewModel<Vehicle>.self, argument: defaultNetwork)
             return ItemViewController(viewModel: viewModel)
         }
-        container.register(ItemViewController.self) { (resolver: Resolver, url: String, defaultNetwork: DefaultNetworkService) -> ItemViewController<ItemViewModel<Species>> in
-            let viewModel = resolver.resolveUnwrapping(ItemViewModel<Species>.self, arguments: url, defaultNetwork)
+        container.register(ItemViewController.self) { (resolver: Resolver, defaultNetwork: DefaultNetworkService) -> ItemViewController<ItemViewModel<Species>> in
+            let viewModel = resolver.resolveUnwrapping(ItemViewModel<Species>.self, argument: defaultNetwork)
             return ItemViewController(viewModel: viewModel)
         }
     }

@@ -10,6 +10,13 @@ extension Resolver {
         fatalError("\(serviceType) resolution failed")
     }
 
+    public func resolveUnwrapping<Service>(_ serviceType: Service.Type, name: String) -> Service {
+        if let resolution = resolve(serviceType, name: name) {
+            return resolution
+        }
+        fatalError("\(serviceType) resolution failed")
+    }
+    
     public func resolveUnwrapping<Service, Arg1>(_ serviceType: Service.Type, argument: Arg1) -> Service {
         if let resolution = resolve(serviceType, argument: argument) {
             return resolution
@@ -17,6 +24,13 @@ extension Resolver {
         fatalError("\(serviceType) resolution failed")
     }
 
+    public func resolveUnwrapping<Service, Arg1>(_ serviceType: Service.Type, name: String, argument: Arg1) -> Service {
+        if let resolution = resolve(serviceType, name: name, argument: argument) {
+            return resolution
+        }
+        fatalError("\(serviceType) resolution failed")
+    }
+    
     // swiftlint:disable function_parameter_count
     public func resolveUnwrapping<Service, Arg1, Arg2>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2) -> Service {
         if let resolution = resolve(serviceType, arguments: arg1, arg2) {
@@ -25,6 +39,13 @@ extension Resolver {
         fatalError("\(serviceType) resolution failed")
     }
 
+    public func resolveUnwrapping<Service, Arg1, Arg2>(_ serviceType: Service.Type, name: String, arguments arg1: Arg1, _ arg2: Arg2) -> Service {
+        if let resolution = resolve(serviceType, name: name, arguments: arg1, arg2) {
+            return resolution
+        }
+        fatalError("\(serviceType) resolution failed")
+    }
+    
     public func resolveUnwrapping<Service, Arg1, Arg2, Arg3>(
         _ serviceType: Service.Type,
         arguments arg1: Arg1,

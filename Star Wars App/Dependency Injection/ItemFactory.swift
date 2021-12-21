@@ -1,6 +1,6 @@
 import Swinject
 protocol ItemFactoryProtocol {
-    func makeItemViewController<Item: Codable>(ItemType: Item.Type, url: String, network: DefaultNetworkService) -> ItemViewController<ItemViewModel<Item>>
+    func makeItemViewController<Item: Codable & Searchable>(ItemType: Item.Type, network: DefaultNetworkService) -> ItemViewController<ItemViewModel<Item>>
 }
 class ItemFactory: ItemFactoryProtocol {
     
@@ -16,8 +16,8 @@ class ItemFactory: ItemFactoryProtocol {
     
     // MARK: - FACTORY
     
-    public func makeItemViewController<Item: Codable>(ItemType: Item.Type, url: String, network: DefaultNetworkService) -> ItemViewController<ItemViewModel<Item>> {
-        return resolver.resolveUnwrapping(ItemViewController.self, arguments: url, network)
+    public func makeItemViewController<Item: Codable & Searchable>(ItemType: Item.Type, network: DefaultNetworkService) -> ItemViewController<ItemViewModel<Item>> {
+        return resolver.resolveUnwrapping(ItemViewController.self, argument: network)
         
     }
     

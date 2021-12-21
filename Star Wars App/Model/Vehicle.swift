@@ -1,6 +1,8 @@
 import Foundation
 
-struct Vehicle: Codable {
+struct Vehicle: Codable, Searchable {
+    static var group: String = "vehicles"
+
     let name, model, manufacturer, costInCredits: String
     let length, maxAtmospheringSpeed, crew, passengers: String
     let cargoCapacity, consumables, vehicleClass: String

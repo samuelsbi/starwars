@@ -1,6 +1,8 @@
 import Foundation
 
-struct Person: Codable {
+struct Person: Codable, Searchable {
+    static var group: String = "people"
+
     let name, height, mass, hairColor: String
     let skinColor, eyeColor, birthYear: String
     let gender: Gender

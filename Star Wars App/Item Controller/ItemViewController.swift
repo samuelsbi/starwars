@@ -1,15 +1,10 @@
 import UIKit
 import RxSwift
+
 enum CollectionIndex: Int {
     case name
     case gender
 }
-
-//protocol ItemViewControllerProtocol: UICollectionViewController {
-//    associatedtype ViewModel
-//    var viewModel: ViewModel {get set}
-//    var delegate: ItemViewControllerDelegate? { get set }
-//}
 
 class ItemViewController<ItemViewModel: ItemViewModelProtocol>: UICollectionViewController, ErrorHandler, ReloadDataDelegate {
     
@@ -18,11 +13,7 @@ class ItemViewController<ItemViewModel: ItemViewModelProtocol>: UICollectionView
     internal var viewModel: ItemViewModel
 
     weak var delegate: ItemViewControllerDelegate?
-    
-    // MARK: - UI
-    
-    
-    
+    private let disposeBag = DisposeBag()
     // MARK: - LIFE CYCLE
     
     init(viewModel: ItemViewModel) {
@@ -42,13 +33,19 @@ class ItemViewController<ItemViewModel: ItemViewModelProtocol>: UICollectionView
         super.viewDidLoad()
         
         setupView()
-        setupDelegates()
+        setupSubscriptions()
     }
     
     // MARK: - SETUP
-    private func setupDelegates() {
-        viewModel.errorHandler = self
-        viewModel.reloadDataDelegate = self
+    private func setupSubscriptions() {
+        
+        viewModel.statusObserver.subscribe(onNext: { [weak self] status in
+            self?.reloadData()
+            print("done")
+        }).disposed(by: disposeBag)
+        viewModel.errorObserver.subscribe(onNext: { [weak self] error in
+            self?.handle(error: error)
+        }).disposed(by: disposeBag)
     }
     
     private func setupView() {
@@ -120,8 +117,6 @@ class ItemViewController<ItemViewModel: ItemViewModelProtocol>: UICollectionView
 extension ItemViewController: WriteNameDelegate {
     func setText(_ text: String) {
         self.viewModel.fillData(details: text)
-        collectionView.collectionViewLayout.invalidateLayout()
-        
     }
     
 }

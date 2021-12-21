@@ -1,6 +1,8 @@
 import Foundation
 
-struct Planet: Codable {
+struct Planet: Codable, Searchable {
+    static var group: String = "planets"
+    
     let name, rotationPeriod, orbitalPeriod, diameter: String
     let climate, gravity, terrain, surfaceWater: String
     let population: String

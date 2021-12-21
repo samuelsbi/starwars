@@ -30,7 +30,7 @@
 		96C323F2275549A100B862B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C323F1275549A100B862B9 /* SceneDelegate.swift */; };
 		96C323F9275549A300B862B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96C323F8275549A300B862B9 /* Assets.xcassets */; };
 		96C323FC275549A300B862B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96C323FA275549A300B862B9 /* LaunchScreen.storyboard */; };
-		96C3240527554A1700B862B9 /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C3240427554A1700B862B9 /* People.swift */; };
+		96C3240527554A1700B862B9 /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C3240427554A1700B862B9 /* Searchable.swift */; };
 		96C3240A27554AAF00B862B9 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C3240927554AAF00B862B9 /* Person.swift */; };
 		96C3240D27554AC800B862B9 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C3240C27554AC800B862B9 /* Gender.swift */; };
 		96C3241027554B3A00B862B9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C3240F27554B3A00B862B9 /* Coordinator.swift */; };
@@ -87,7 +87,7 @@
 		96C323F8275549A300B862B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96C323FB275549A300B862B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96C323FD275549A300B862B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		96C3240427554A1700B862B9 /* People.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = People.swift; sourceTree = "<group>"; };
+		96C3240427554A1700B862B9 /* Searchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchable.swift; sourceTree = "<group>"; };
 		96C3240927554AAF00B862B9 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		96C3240C27554AC800B862B9 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		96C3240F27554B3A00B862B9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				966CB9A8275664E900E7FBBE /* ItemDescription.swift */,
-				96C3240427554A1700B862B9 /* People.swift */,
+				96C3240427554A1700B862B9 /* Searchable.swift */,
 				966CB9A527565D7800E7FBBE /* Planet.swift */,
 				966C1FA8275683F20046033B /* Film.swift */,
 				966C1FAA275684400046033B /* Starship.swift */,
@@ -346,7 +346,7 @@
 				966CB9A627565D7800E7FBBE /* Planet.swift in Sources */,
 				96C3241627554B9C00B862B9 /* MainCoordinator.swift in Sources */,
 				965C2E2A27564FB80020CB80 /* ReloadDataDelegate.swift in Sources */,
-				96C3240527554A1700B862B9 /* People.swift in Sources */,
+				96C3240527554A1700B862B9 /* Searchable.swift in Sources */,
 				963DC89827692AC100D07CE0 /* NetworkFetchUseCase.swift in Sources */,
 				96B4E1162756B1400014F266 /* ActivityStatus.swift in Sources */,
 				963DC89A27692B1700D07CE0 /* ItemFactory.swift in Sources */,
